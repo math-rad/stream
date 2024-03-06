@@ -1,4 +1,5 @@
-const { Client, REST, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, Routes } = DiscordJs
+"use strict";
+const { Client, REST, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, Routes } = require("discord.js");
 
 const TOKEN = process.env.TOKEN;
 
