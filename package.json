@@ -1,6 +1,6 @@
 {
   "name": "streamit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A discord a functionally versitile discord bot for streaming music into your guilds voice chats!!",
   "main": "index.js",
   "scripts": {
