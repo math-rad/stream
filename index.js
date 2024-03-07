@@ -14,5 +14,12 @@ streamItClient.on("message", (m) => {
     if (m.author.bot) {
         return
     }
+    m.channel.send({
+        embeds: [
+             new discordJs.MessageEmbed()
+                .setDescription(m.content)
+                .setFooter("i")
+        ]
+    })
 })
 streamItClient.login(token)
