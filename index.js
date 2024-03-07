@@ -16,9 +16,9 @@ streamItClient.on("message", (m) => {
     }
     m.channel.send({
         embeds: [
-             new discordJs.MessageEmbed()
-                .setDescription(m.content)
-                .setFooter("i")
+             new discordJs.MessageEmbed({
+                "description": m.content,
+             })
         ]
     })
 })
