@@ -11,10 +11,7 @@ const streamItClient = new Client({
 })
 
 streamItClient.on("messageCreate", (message) => {
-    if (message.author.bot) {
-        return
-    }
-    message.reply("erm")
+    console.log(message.content);
 })
 
 streamItClient.login(token)
