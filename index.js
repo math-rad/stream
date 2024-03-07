@@ -1,13 +1,14 @@
-//const {token} = require("./localconstants.json");
+const {token} = require("./localconstants.json");
 
 const discordJs = require("discord.js");
 
 const {Client, EmbedBuilder, GatewayIntentBits} = discordJs;
 
-const streamItClient = new Client({
-    "intents": [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages]
-})
+console.log(discordJs.IntentsBitField)
 
+const streamItClient = new Client({
+    "intents": ["Guilds", "DirectMessages", "MessageContent", "GuildMessages"]
+})
 
 streamItClient.on("messageCreate", (message) => {
     if (message.author.bot) {
