@@ -1,7 +1,7 @@
 {
   "name": "streamit",
   "version": "1.0.2",
-  "description": "A discord a functionally versitile discord bot for streaming music into your guilds voice chats!!",
+  "description": "A functionally versitile discord bot for streaming music into your guilds voice chats!!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
