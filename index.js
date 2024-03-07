@@ -10,8 +10,7 @@ const streamItClient = new Client({
     "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES]
 })
 
-streamItClient.on("messageCreate", (message) => {
-    console.log(message.content);
+streamItClient.on("message", (m) => {
+    console.log(m.content)
 })
-
 streamItClient.login(token)
