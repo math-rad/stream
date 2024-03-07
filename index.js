@@ -14,7 +14,5 @@ streamItClient.on("message", (m) => {
     if (m.author.bot) {
         return
     }
-
-    m.
 })
 streamItClient.login(token)
