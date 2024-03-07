@@ -5,7 +5,7 @@ const discordJs = require("discord.js");
 const {Client, EmbedBuilder, GatewayIntentBits} = discordJs;
 
 const streamItClient = new Client({
-    "intents": [GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages]
+    "intents": [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages]
 })
 
 
