@@ -1,4 +1,4 @@
-const {token} = require("./localconstants.json");
+//const {token} = require("./localconstants.json");
 
 const discordJs = require("discord.js");
 
