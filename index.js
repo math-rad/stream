@@ -1,3 +1,3 @@
-const {token} = require("localconstants.json")
+const {token} = require("./localconstants.json");
 
-print(token)
+console.log(token)
