@@ -1,1 +1,3 @@
-console.log(process.env.TOKEN);
+const {token} = require("localconstants.json")
+
+print(token)
