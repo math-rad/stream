@@ -7,7 +7,7 @@ const {Client, EmbedBuilder, Intents} = discordJs;
 console.log(discordJs.IntentsBitField)
 
 const streamItClient = new Client({
-    "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES]
+    "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS]
 })
 
 streamItClient.on("message", (m) => {
@@ -15,6 +15,6 @@ streamItClient.on("message", (m) => {
         return
     }
 
-    m.reply("hello!")
+    m.
 })
 streamItClient.login(token)
