@@ -17,6 +17,7 @@ streamItClient.on("message", (m) => {
     m.channel.send({
         embeds: [
              new discordJs.MessageEmbed({
+                "title": "a response",
                 "description": m.content,
              })
         ]
