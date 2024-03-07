@@ -39,7 +39,7 @@ class cache {
         const content = process(input)
         this.cache[key] = content
 
-        return content;
+        return [content];
     }
 }
 
@@ -88,37 +88,49 @@ streamItClient.on("message", (m) => {
     }
 
     const content = m.content;
+    if (content.sub(0, 1) != "!") {
+        return 
+    }
 
-    if (content.substring(0, 1) === '!') {
-        const arguments = content.substring(1).split('!')
+    const guild = m.channel.guild;
 
-        switch (arguments[0]) {
-            case "record": {
-                const attachment = m.attachments.array()[0]
-                if (!attachment) {
-                    return
-                }
+    const arguments = content.substring(1).split(' ')
 
-                const name = arguments[1]
-                makeAudioResource(attachment, (name != '' && name != null) && name)
-                attachmentCache.get()
+    switch(arguments[0]) {
+        case "record": {
+            const attachment = m.attachments.array()[0]
+            const name = arguments[1]
 
-                m.reply(`Recorded audio as ${name || attachment.url}`)
-                break
+            if (!attachment) {
+                return m.reply("please add an attachment to record")
             }
 
-            case "send": {
-                const attachment = audioResourceCache.cache[arguments[0]]
-                if (!attachment) {
-                    m.reply("no recorded value found")
-                    break
-                }
+            makeAudioResource(attachment, (name != '' && name != null) && name)
 
-                m.reply({
-                    "attachments": [attachment.url]
-                })
-            }
+            return m.reply("recorded!")
+        }
+
+        case "play": {
+            const name = arguments[1]
+
+
+            /**
+             *  @type {voice.AudioResource} 
+             */
+            const audio = audioResourceCache.get(name)
+            const connection = voice.joinVoiceChannel({
+                channelId: require("./localconstants.json").testingVcID,
+                guildId: m.guild,
+                adapterCreator: guild.voiceAdapterCreator
+            })
+
+            connection.subscribe(radicalStream)
+
+            m.reply("playing!")
+
+        
         }
     }
+
 })
 streamItClient.login(token)
