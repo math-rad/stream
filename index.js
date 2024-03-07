@@ -14,13 +14,8 @@ streamItClient.on("message", (m) => {
     if (m.author.bot) {
         return
     }
-    m.channel.send({
-        embeds: [
-             new discordJs.MessageEmbed({
-                "title": "a response",
-                "description": m.content,
-             })
-        ]
+    m.reply({
+        files: ["./pipe.mp3"]
     })
 })
 streamItClient.login(token)
