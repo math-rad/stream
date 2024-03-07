@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/voice": "^0.16.1",
     "discord.js": "^12.5.3",
     "uuid": "^9.0.1"
   }
