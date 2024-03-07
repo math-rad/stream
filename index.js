@@ -29,7 +29,7 @@ class cache {
     }
 
     get(input, key) {
-        const key = key || this.key(input)
+        key = key || this.key(input)
         const cachedContent = this.cache[key]
 
         if (cachedContent) {
