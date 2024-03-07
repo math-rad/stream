@@ -11,6 +11,10 @@ const streamItClient = new Client({
 })
 
 streamItClient.on("message", (m) => {
-    console.log(m.content)
+    if (m.author.bot) {
+        return
+    }
+
+    m.reply("hello!")
 })
 streamItClient.login(token)
