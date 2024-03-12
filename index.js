@@ -10,12 +10,11 @@ const streamItClient = new Client({
 })
 
 const radicalStream = voice.createAudioPlayer({
-    
+
 })
 
 
-const testGuild = streamItClient.guilds.cache.get("1214779016188530728")
-const testingChannel = testGuild.channels.cache.get(testingVcID).voiceAdapterCreator
+
 
 class cache {
     constructor() {
@@ -65,7 +64,7 @@ const audioResourceCache = new (class extends cache {
     }
 })
 
-const attachmentCache = new (class extends cache{
+const attachmentCache = new (class extends cache {
     process(attachment) {
         return attachment
     }
@@ -80,14 +79,17 @@ const attachmentCache = new (class extends cache{
  */
 
 streamItClient.on("message", (message) => {
+    const testGuild = streamItClient.guilds.cache.get("1214779016188530728")
+    const testingChannel = testGuild.channels.cache.get(testingVcID).voiceAdapterCreator
+
     const messageContent = message.content;
     const user = message.author;
 
-    if (user.bot || messageContent.substring(0, 1) ==! '!') {
+    if (user.bot || messageContent.substring(0, 1) == ! '!') {
         return
     }
 
-    const arguments = messageContent.substring(1) .split(' ');
+    const arguments = messageContent.substring(1).split(' ');
     const keyword = arguments.shift()
 
     switch (keyword) {
