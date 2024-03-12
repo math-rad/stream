@@ -1,8 +1,8 @@
 "use strict";
+const { createAudioPlayer, createAudioResource } = require("@discordjs/voice");
 const { token, testingVcID } = require("./localconstants.json");
 
 const discordJs = require("discord.js");
-//const {voice} = require("@discordjs/voice");
 const { Client, Intents } = discordJs;
 
 
@@ -10,7 +10,7 @@ const streamItClient = new Client({
     "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS, Intents.FLAGS.GUILD_VOICE_STATES]
 });
 
-const radicalStream = voice.createAudioPlayer({
+const radicalStream = createAudioPlayer({
 
 });
 
@@ -51,7 +51,7 @@ const audioResourceCache = new (class extends cache {
      * @param {discordJs.MessageAttachment} attachment 
      */
     process(attachment) {
-        return voice.createAudioResource(attachment.url);
+        return createAudioResource(attachment.url);
     };
 
 
