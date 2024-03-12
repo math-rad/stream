@@ -2,7 +2,7 @@
 const { token, testingVcID } = require("./localconstants.json");
 
 const discordJs = require("discord.js");
-const voice = require("@discordjs/voice");
+//const {voice} = require("@discordjs/voice");
 const { Client, Intents } = discordJs;
 
 
