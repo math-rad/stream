@@ -1,19 +1,21 @@
-const { token } = require("./localconstants.json");
+const { token, testingVcID } = require("./localconstants.json");
 
 const discordJs = require("discord.js");
 const voice = require("@discordjs/voice")
-
-const { Client, EmbedBuilder, Intents } = discordJs;
+const { Client, Intents } = discordJs;
 
 
 const streamItClient = new Client({
-    "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS]
+    "intents": [Intents.FLAGS.GUILDS, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS, Intents.FLAGS.GUILD_VOICE_STATES]
 })
 
 const radicalStream = voice.createAudioPlayer({
-
+    
 })
 
+
+const testGuild = streamItClient.guilds.cache.get("1214779016188530728")
+const testingChannel = testGuild.channels.cache.get(testingVcID).voiceAdapterCreator
 
 class cache {
     constructor() {
@@ -77,60 +79,32 @@ const attachmentCache = new (class extends cache{
  * @param {discordJs.MessageAttachment} attachment 
  */
 
-function makeAudioResource(attachment, key) {
-    return audioResourceCache.get(attachment.key)
-}
+streamItClient.on("message", (message) => {
+    const messageContent = message.content;
+    const user = message.author;
 
-
-streamItClient.on("message", (m) => {
-    if (m.author.bot) {
+    if (user.bot || messageContent.substring(0, 1) ==! '!') {
         return
     }
 
-    const content = m.content;
-    if (content.sub(0, 1) != "!") {
-        return 
-    }
+    const arguments = messageContent.substring(1) .split(' ');
+    const keyword = arguments.shift()
 
-    const guild = m.channel.guild;
-
-    const arguments = content.substring(1).split(' ')
-
-    switch(arguments[0]) {
-        case "record": {
-            const attachment = m.attachments.array()[0]
-            const name = arguments[1]
-
-            if (!attachment) {
-                return m.reply("please add an attachment to record")
-            }
-
-            makeAudioResource(attachment, (name != '' && name != null) && name)
-
-            return m.reply("recorded!")
-        }
-
-        case "play": {
-            const name = arguments[1]
-
-
-            /**
-             *  @type {voice.AudioResource} 
-             */
-            const audio = audioResourceCache.get(name)
-            const connection = voice.joinVoiceChannel({
-                channelId: require("./localconstants.json").testingVcID,
-                guildId: m.guild,
-                adapterCreator: guild.voiceAdapterCreator
+    switch (keyword) {
+        case "pipe": {
+            message.reply({
+                "embeds": [
+                    new discordJs.MessageEmbed()
+                        .setTitle("stream.it ✨")
+                        .setDescription("hi!")
+                ]
             })
-
-            connection.subscribe(radicalStream)
-
-            m.reply("playing!")
-
-        
+            console.log(testingCHannel.voiceAdapterCreator);
+            break
         }
     }
+
 
 })
+
 streamItClient.login(token)
